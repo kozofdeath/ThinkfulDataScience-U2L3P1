@@ -2,6 +2,7 @@ import pandas as pd;
 import matplotlib.pyplot as plt;
 import collections
 import statsmodels.api as sm;
+import numpy as np;
 
 loansData = pd.read_csv('https://github.com/Thinkful-Ed/curric-data-001-data-sets/raw/master/loans/loansData.csv')
 
@@ -45,11 +46,7 @@ print count;
 #plt.show();
 
 #you can just map on colums direclty
-F = FICO.map(lambda x : 'toots');
-print F;
-
-print len(loansData.values[0])
-print len(list(loansData));
+print loansData[:, 10];
 
 
 
