@@ -47,11 +47,11 @@ count = collections.Counter(FICO_score_cleaned)
 # print list(loansData);
 # ['Amount.Requested', 'Amount.Funded.By.Investors', 'Interest.Rate', 'Loan.Length', 'Loan.Purpose', 'Debt.To.Income.Ratio', 'State', 'Home.Ownership', 'Monthly.Income', 'FICO.Range',
 # 'Open.CREDIT.Lines', 'Revolving.CREDIT.Balance', 'Inquiries.in.the.Last.6.Months', 'Employment.Length', 'FICO.Score']
-
-
-
-
-
-
-
 #.index is going to give you a list of the index labels
+
+
+intrate = loansData['Interest.Rate']
+loanamt = loansData['Amount.Requested']
+fico = loansData['FICO.Score']
+
+print loansData.values;
