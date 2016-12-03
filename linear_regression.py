@@ -24,8 +24,6 @@ fico_iter = FICO.iteritems()
 y = map(lambda x : int(x[1].split('-')[0]), fico_iter);
 loansData.loc[:, 'FICO.Score'] = pd.Series(y, loansData.index);
 
-print loansData['Amount.Requested'];
-
 
 loan_length_cleaned = loansData['Loan.Length'];
 interest_rate_cleaned = loansData['Interest.Rate']
@@ -54,4 +52,16 @@ intrate = loansData['Interest.Rate']
 loanamt = loansData['Amount.Requested']
 fico = loansData['FICO.Score']
 
-print loansData.values;
+#matrix makes a matrix object; it seems like columns form pandas are turned into a matrix with one row, n columns
+#the tranpose will make an n X 1 matrix
+y = np.matrix(intrate).transpose();
+x1 = np.matrix(loanamt).transpose();
+x2 = np.matrix(fico).transpose();
+
+#will make a m x 2 matrix
+x = np.column_stack([x1,x2])
+
+X = sm.add_constant(x)
+model = sm.OLS(y,X)
+f = model.fit()
+print f.summary()
